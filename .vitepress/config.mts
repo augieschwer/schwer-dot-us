@@ -22,7 +22,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/augieschwer' },
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/augustschwer/' }
     ]
   }
 })

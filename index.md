@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Schwer.us"
   text: "Schwer, like where?"
-  tagline: My great project tagline
+  tagline: Project, documentation, and stuff...
   actions:
     - theme: brand
       text: Markdown Examples
