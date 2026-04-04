@@ -1,11 +1,14 @@
 # BTRFS
 Documentation and configuration for my btrfs setup.
 
-## Useful tools
-### Maintenance
-[btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) works well as a set and forget for always mounted drives. See [Maitenance](#maintenance-1) for a list of tasks to run manually on drives that are not always attached.
+## Useful tools :toolbox:
 
-## Maintenance
+### Maintenance :hammer_and_wrench:
+
+#### [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) 
+This tool works well as a set and forget for always mounted drives. See [Maitenance Tasks](#maintenance-tasks) for a list of tasks to run manually on drives that are not always attached.
+
+## Maintenance Tasks
 
 | Interval | Task | Command |
 | -------- | ---- | ------- |
