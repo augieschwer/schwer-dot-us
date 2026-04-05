@@ -8,6 +8,10 @@ Documentation and configuration for my btrfs setup.
 #### [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) 
 This tool works well as a set and forget for always mounted drives. See [Maitenance Tasks](#maintenance-tasks) for a list of tasks to run manually on drives that are not always attached.
 
+::: info Configuration option
+The special word/mountpoint "auto" will evaluate all mounted btrfs filesystems.
+This is useful if you have multiple btrfs mount points and you just want them to be found without having to list them all.
+
 ## Maintenance Tasks
 
 | Interval | Task | Command |
