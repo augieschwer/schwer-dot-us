@@ -3,6 +3,16 @@ Documentation and configuration for my btrfs setup.
 
 ## Useful tools :toolbox:
 
+### Snapshot automation
+
+#### [btrbk](https://github.com/digint/btrbk)
+
+By far the best and most versatile BTRFS backup tool.
+
+#### [timeshift](https://github.com/linuxmint/timeshift)
+
+Not really backup, but snapshot automation.
+
 ### Maintenance :hammer_and_wrench:
 
 #### [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) 
