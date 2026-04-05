@@ -9,6 +9,10 @@ Documentation and configuration for my btrfs setup.
 
 By far the best and most versatile BTRFS backup tool.
 
+::: warning
+Check [Gotchas](#gotchas) if you plan on storing snapshots in a location scanned by `updatedb`.
+:::
+
 #### [timeshift](https://github.com/linuxmint/timeshift)
 
 Not really backup, but snapshot automation.
@@ -18,9 +22,21 @@ Not really backup, but snapshot automation.
 #### [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) 
 This tool works well as a set and forget for always mounted drives. See [Maitenance Tasks](#maintenance-tasks) for a list of tasks to run manually on drives that are not always attached.
 
-::: info Configuration option
+::: tip Configuration option
 The special word/mountpoint "auto" will evaluate all mounted btrfs filesystems.
 This is useful if you have multiple btrfs mount points and you just want them to be found without having to list them all.
+:::
+
+## Gotchas :warning:
+
+Tools like [plocate](https://plocate.sesse.net/plocate.1.html) make finding files on your computer easy and fast; they do this by scanning your filesystem and building an index with tools like [updatedb](https://plocate.sesse.net/updatedb.8.html). These tools will happily traverse BTRFS snapshots and grow their database until they are unusable. To prevent this utilize the `PRUNENAMES` and `PRUNEPATHS` configuration options from [updatedb.conf](https://plocate.sesse.net/updatedb.conf.5.html)
+
+:::info updatedb.conf
+```
+PRUNENAMES=".snapshots"
+PRUNEPATHS="/mnt/backup"
+```
+:::
 
 ## Maintenance Tasks
 
@@ -28,8 +44,9 @@ This is useful if you have multiple btrfs mount points and you just want them to
 | -------- | ---- | ------- |
 | Monthly  | Scrub| `sudo btrfs scrub start -B /mnt/archive` |
 
-::: info
+::: tip
 Check the status of a scrub with
 ```sh
 sudo btrfs scrub status /mnt/archive
 ```
+:::
