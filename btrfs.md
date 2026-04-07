@@ -29,6 +29,17 @@ This is useful if you have multiple btrfs mount points and you just want them to
 
 ## Cool Tricks :sunglasses:
 
+Take a snapshot before installing/removing/updating a package.
+
+### btrbk
+
+::: info /etc/apt/apt.conf.d/99btrbk
+```
+// snapshot the filesystem before installing packages
+DPkg::Pre-Install-Pkgs {"/usr/local/bin/btrbk snapshot -qp";};
+```
+:::
+
 ### Timeshift
 ::: info /etc/apt/apt.conf.d/80-btrfs-snapshot
 ```
