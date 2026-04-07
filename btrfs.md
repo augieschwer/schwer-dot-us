@@ -5,13 +5,13 @@ Documentation and configuration for my btrfs setup.
 
 ### Snapshot automation
 
-#### [btrbk](https://github.com/digint/btrbk)
-
-By far the best and most versatile BTRFS backup tool.
-
 ::: warning
 Check [Gotchas](#gotchas) if you plan on storing snapshots in a location scanned by `updatedb`.
 :::
+
+#### [btrbk](https://github.com/digint/btrbk)
+
+By far the best and most versatile BTRFS backup tool.
 
 #### [timeshift](https://github.com/linuxmint/timeshift)
 
@@ -25,6 +25,15 @@ This tool works well as a set and forget for always mounted drives. See [Maitena
 ::: tip Configuration option
 The special word/mountpoint "auto" will evaluate all mounted btrfs filesystems.
 This is useful if you have multiple btrfs mount points and you just want them to be found without having to list them all.
+:::
+
+## Cool Tricks :sunglasses:
+
+### Timeshift
+::: info /etc/apt/apt.conf.d/80-btrfs-snapshot
+```
+DPkg::Pre-Install-Pkgs {"/usr/bin/timeshift --scripted --create --comments 'Dpkg::Pre-Install-Pkgs';"};
+```
 :::
 
 ## Gotchas :warning:
