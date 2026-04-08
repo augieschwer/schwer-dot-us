@@ -17,6 +17,15 @@ Documentation and configuration for my btrfs setup.
 
 #### Ubuntu style
 
+Uses a subvolume layout that separates the root system (`@`) from the home directory (`@home`) on a single partition.
+
+::: info /etc/fstab
+```
+/dev/mapper/nvme0n1p3_crypt /               btrfs   defaults,subvol=@ 0       0
+/dev/mapper/nvme0n1p3_crypt /home           btrfs   defaults,subvol=@home 0       0
+```
+:::
+
 ## Useful tools :toolbox:
 
 ### Snapshot automation
