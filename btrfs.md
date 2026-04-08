@@ -5,6 +5,10 @@ Documentation and configuration for my btrfs setup.
 
 ### Intro
 
+[BTRFS Lightning Talk - DTG (PDF)](./BTRFS%20Lightning%20Talk%20-%20DTG.pdf)
+
+[BTRFS Lightning Talk - DTG (YouTube)](https://www.youtube.com/live/iu-ryIwFcAw?si=Kq3gbEDuxq2Khqoa&t=1409)
+
 ### Walkthroughs
 
 ### Snapshot layouts
