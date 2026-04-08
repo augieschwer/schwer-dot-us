@@ -1,6 +1,18 @@
 # BTRFS
 Documentation and configuration for my btrfs setup.
 
+## The basics
+
+### Intro
+
+### Walkthroughs
+
+### Snapshot layouts
+
+#### Suse style
+
+#### Ubuntu style
+
 ## Useful tools :toolbox:
 
 ### Snapshot automation
