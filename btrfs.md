@@ -11,6 +11,8 @@ Documentation and configuration for my btrfs setup.
 
 ### Walkthroughs
 
+### [Official documentation](https://btrfs.readthedocs.io/en/latest/)
+
 ### Snapshot layouts
 
 #### OpenSUSE style
@@ -50,6 +52,33 @@ Check [Gotchas](#gotchas) if you plan on storing snapshots in a location scanned
 #### [btrbk](https://github.com/digint/btrbk)
 
 By far the best and most versatile BTRFS backup tool.
+
+::: info /etc/btrbk.conf
+```
+subvolume    /
+	snapshot_dir 	/.snapshots
+	target 		/mnt/backup/root/
+
+subvolume 	/home
+	snapshot_dir 	/home/.snapshots
+	target 		/mnt/backup/home/
+
+subvolume	/root
+	snapshot_create	onchange
+	snapshot_dir 	/root/.snapshots
+	target 		/mnt/backup/root_user/
+
+subvolume	/usr/local
+	snapshot_create	onchange
+	snapshot_dir 	/usr/local/.snapshots
+	target 		/mnt/backup/usr_local/
+
+subvolume	/opt
+	snapshot_create	onchange
+	snapshot_dir 	/opt/.snapshots
+	target 		/mnt/backup/opt/
+```
+:::
 
 #### [Timeshift](https://github.com/linuxmint/timeshift)
 
