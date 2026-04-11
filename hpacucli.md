@@ -1,6 +1,13 @@
 # HPACUCLI
 
+HPACUCLI stands for HP Array Configuration Utility CLI.
+
+[Download](https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-UNITY_C8723&tab=releaseNotes)
+
 ## RAID Check
+
+Check for faults on your RAID array, and email it to yourself. Put this in `/etc/cron.daily` to schedule regular checks.
+
 ```bash
 #!/bin/bash
 MAIL=mail@example.com
