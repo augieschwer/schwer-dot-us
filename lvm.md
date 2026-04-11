@@ -6,7 +6,7 @@ The advantage to using lvmcache is you can add a cacheing disk to an existing LV
 
 For example this is an external drive setup I have for backups; which uses a 750GB HDD backing disk and a 120GB SSD cache disk.
 
-![lvmcache disks](./lvmcache.jpg)
+![lvmcache disks](/lvmcache.jpg)
 
 ```sh
 ➜  ~ sudo lvdisplay | grep Cache
