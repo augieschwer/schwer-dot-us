@@ -10,4 +10,7 @@ hero:
     - theme: brand
       text: LVM documentation
       link: lvm.md
+    - theme: alt
+      text: HPACUCLI documentation
+      link: hpacucli.md
 ---
