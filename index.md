@@ -10,9 +10,12 @@ hero:
     - theme: brand
       text: LVM documentation
       link: lvm.md
-    - theme: alt
+    - theme: brand
       text: HPACUCLI documentation
       link: hpacucli.md
+    - theme: alt
+      text: Checkout the code for this site on GitHub
+      link: https://github.com/augieschwer/schwer-dot-us
 features:
   - title: LVM Documentation
     details: Logical Volume Manager docs
