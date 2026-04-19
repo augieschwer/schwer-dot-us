@@ -5,24 +5,18 @@ layout: home
 hero:
   name: "Schwer.us"
   text: "Schwer, like where?"
-  tagline: Project, documentation, and stuff...
+  tagline: Projects, and documentation.
   actions:
-    - theme: brand
-      text: LVM documentation
-      link: lvm.md
-    - theme: brand
-      text: HPACUCLI documentation
-      link: hpacucli.md
     - theme: alt
       text: Checkout the code for this site on GitHub
       link: https://github.com/augieschwer/schwer-dot-us
 features:
-  - title: LVM Documentation
-    details: Logical Volume Manager docs
+  - title: LVM
+    details: Logical Volume Manager - my LVM setup leveraging lvmcache to speedup reads and writes to an external backup drive.
     link: lvm.md
     linkText: LVM
-  - title: HPACUCLI Documentation
-    details: HP Array Configuration Utility CLI docs
+  - title: HPACUCLI
+    details: HP Array Configuration Utility CLI - a quick BASH script I wrote to notify you via email if a drive in your RAID array goes bad.
     link: hpacucli.md
     linkText: HPACUCLI
 ---
