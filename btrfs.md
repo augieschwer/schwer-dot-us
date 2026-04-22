@@ -55,6 +55,16 @@ By far the best and most versatile BTRFS backup tool.
 
 ::: info /etc/btrbk.conf
 ```
+backend_local_user     btrfs-progs-sudo
+snapshot_preserve      6h 2d 2w
+snapshot_preserve_min  latest
+ssh_identity           /etc/btrbk/ssh/btrbk
+ssh_user               root
+stream_buffer          256m
+target_preserve        24h 7d 4w 12m 1y
+target_preserve_min    latest
+transaction_log        /var/log/btrbk.log
+
 subvolume    /
 	snapshot_dir 	/.snapshots
 	target 		/mnt/backup/root/
@@ -83,8 +93,9 @@ subvolume	/opt
 #### [Timeshift](https://github.com/linuxmint/timeshift)
 
 Not really backup, but snapshot automation.
+Built into some distros, requires [Ubuntu Style snapshot layout](#ubuntu-style).
 
-### Maintenance :hammer_and_wrench:
+### Maintenance
 
 #### [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance) 
 This tool works well as a set and forget for always mounted drives. See [Maitenance Tasks](#maintenance-tasks) for a list of tasks to run manually on drives that are not always attached.
@@ -93,6 +104,14 @@ This tool works well as a set and forget for always mounted drives. See [Maitena
 The special word/mountpoint "auto" will evaluate all mounted btrfs filesystems.
 This is useful if you have multiple btrfs mount points and you just want them to be found without having to list them all.
 :::
+
+### Snapshot manipulation
+#### [httm](https://github.com/kimono-koans/httm)
+Winner for the coolest name: HTTM stands for "Hot Tub Time Machine".
+
+### File system metrics
+#### [compsize](https://github.com/kilobyte/compsize)
+`compsize` takes a list of files (given as arguments) on a btrfs filesystem and measures used compression types and effective compression ratio, producing a report.
 
 ## Cool Tricks
 
