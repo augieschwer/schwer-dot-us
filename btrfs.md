@@ -90,6 +90,21 @@ subvolume	/opt
 ```
 :::
 
+::: info /etc/cron.hourly/btrbk
+```sh
+#!/bin/sh
+exec /usr/local/bin/btrbk -q run
+```
+:::
+
+::: info /etc/logrotate.d/btrbk
+```
+/var/log/btrbk.log {
+	rotate 3
+	monthly
+```
+:::
+
 #### [Timeshift](https://github.com/linuxmint/timeshift)
 
 Not really backup, but snapshot automation.
@@ -111,7 +126,17 @@ Winner for the coolest name: HTTM stands for "Hot Tub Time Machine".
 
 ### File system metrics
 #### [compsize](https://github.com/kilobyte/compsize)
+Useful for judging how effective [compression](https://btrfs.readthedocs.io/en/latest/Compression.html) is working on your subvolume.
 `compsize` takes a list of files (given as arguments) on a btrfs filesystem and measures used compression types and effective compression ratio, producing a report.
+```sh
+➜  ~ sudo compsize /home
+Processed 5525349 files, 969946 regular extents (9412294 refs), 1791531 inline.
+Type       Perc     Disk Usage   Uncompressed Referenced  
+TOTAL       65%       49G          75G         719G       
+none       100%       30G          30G         340G       
+zstd        41%       18G          45G         378G       
+prealloc   100%      6.2M         6.2M         297M       
+```
 
 ## Cool Tricks
 

@@ -15,7 +15,7 @@ features:
     details: Documentation and configuration for my btrfs setup.
     link: btrfs.md
     linkText: BTRFS
-  - title: BTRFS
+  - title: LVM
     details: Logical Volume Manager - my LVM setup leveraging lvmcache to speedup reads and writes to an external backup drive.
     link: lvm.md
     linkText: LVM
