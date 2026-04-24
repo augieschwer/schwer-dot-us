@@ -53,6 +53,8 @@ Check [Gotchas](#gotchas) if you plan on storing snapshots in a location scanned
 
 By far the best and most versatile BTRFS backup tool.
 
+BTRFS makes it easy to make snapshots, but snapshots are copies of your data on the same storage, so they aren't good backups; backups should go to another storage place, and `btrbk` makes that easy. Here's the configuration I use:
+
 ::: info /etc/btrbk.conf
 ```
 backend_local_user     btrfs-progs-sudo
@@ -90,12 +92,16 @@ subvolume	/opt
 ```
 :::
 
+I run it hourly out of cron:
+
 ::: info /etc/cron.hourly/btrbk
 ```sh
 #!/bin/sh
 exec /usr/local/bin/btrbk -q run
 ```
 :::
+
+Don't forget to rotate those logs:
 
 ::: info /etc/logrotate.d/btrbk
 ```
