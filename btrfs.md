@@ -5,6 +5,16 @@ Documentation and configuration for my btrfs setup.
 
 ### Intro
 
+BTRFS is a Linux file system. It has several features that make it cool:
+
+* Copy-on-Write (CoW)
+* Dynamic inode allocation
+* Online defragmentation, resizing
+* Built-in RAID
+* Built-in compression
+	* Ztd, lzo, zlib
+* Checksums
+
 [BTRFS Lightning Talk - DTG (PDF)](./BTRFS%20Lightning%20Talk%20-%20DTG.pdf)
 
 [BTRFS Lightning Talk - DTG (YouTube)](https://www.youtube.com/live/iu-ryIwFcAw?si=Kq3gbEDuxq2Khqoa&t=1409)
@@ -112,9 +122,12 @@ Don't forget to rotate those logs:
 :::
 
 #### [Timeshift](https://github.com/linuxmint/timeshift)
+::: tip
+Requires [Ubuntu Style snapshot layout](#ubuntu-style).
+:::
 
-Not really backup, but snapshot automation.
-Built into some distros, requires [Ubuntu Style snapshot layout](#ubuntu-style).
+Not really backup, but snapshot automation. Snapshots are great because they are a copy of your data right next to your data, but for that reason they are not good backups -- if the hard drive your data is on dies and that's where your only snapshot copies are, well you're out of luck. A good backup solution should copy those snapshots to a different location, so you can still get them if your main drive fails; Timeshift doesn't have this, [btrbk](#btrbk) does.
+The nice thing about it though, is it is built into some distros. 
 
 ### Maintenance
 
