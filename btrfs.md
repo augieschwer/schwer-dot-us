@@ -67,6 +67,8 @@ BTRFS makes it easy to make snapshots, but snapshots are copies of your data on 
 
 ::: info /etc/btrbk.conf
 ```
+archive_preserve       7d 5w 12m 7y
+archive_preserve_min   latest
 backend_local_user     btrfs-progs-sudo
 lockfile               /var/lock/btrbk.lock
 snapshot_preserve      6h 2d 2w
