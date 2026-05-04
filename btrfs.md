@@ -184,6 +184,13 @@ DPkg::Pre-Install-Pkgs {"/usr/bin/timeshift --scripted --create --comments 'Dpkg
 ```
 :::
 
+::: tip
+To trigger the above when installing `.deb` files, use `apt` instead of `dpkg`
+```sh
+sudo apt install ./package.deb
+```
+:::
+
 ## Gotchas
 
 Tools like [plocate](https://plocate.sesse.net/plocate.1.html) make finding files on your computer easy and fast; they do this by scanning your filesystem and building an index with tools like [updatedb](https://plocate.sesse.net/updatedb.8.html). These tools will happily traverse BTRFS snapshots and grow their database until they are unusable. To prevent this utilize the `PRUNENAMES` and `PRUNEPATHS` configuration options from [updatedb.conf](https://plocate.sesse.net/updatedb.conf.5.html)
