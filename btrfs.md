@@ -1,19 +1,51 @@
 # BTRFS
-Documentation and configuration for my btrfs setup.
+Documentation and configuration for my Btrfs setup.
 
-## The basics
+## Overview
+This page is my personal Btrfs reference, intended for use on Linux systems where I want snapshot automation, backups, and recovery workflows.
 
-### Intro
+Btrfs snapshots are fast local point-in-time copies, but they are not a substitute for offsite backups. Use snapshots for rollback and local recovery, and use a backup tool such as [btrbk](#btrbk) to copy data to separate storage.
 
-BTRFS is a Linux file system. It has several features that make it cool:
+## Why Btrfs
+Btrfs is a Linux filesystem with features that are useful for my systems:
 
 * Copy-on-Write (CoW)
 * Dynamic inode allocation
-* Online defragmentation, resizing
+* Online defragmentation and resizing
 * Built-in RAID
 * Built-in compression
-	* Ztd, lzo, zlib
-* Checksums
+  * `zstd`, `lzo`, `zlib`
+* Checksums for data and metadata
+
+## Snapshot layouts
+There are two common layouts I use:
+
+### OpenSUSE style
+This layout separates system directories into their own subvolumes. It is more work to set up manually, but it gives better rollback control and finer snapshot scope.
+
+::: info /etc/fstab
+```
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /               btrfs   defaults,subvol=@ 0       0
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /root           btrfs   defaults,subvol=@root_user 0       0
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /tmp            btrfs   defaults,subvol=@tmp 0       0
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /usr/local      btrfs   defaults,subvol=@usr_local 0       0
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /var            btrfs   defaults,subvol=@var 0       0
+UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /opt            btrfs   defaults,subvol=@opt 0       0
+UUID=0786fd3e-4e4c-4113-858b-a7f53e676be9 /home           btrfs   defaults,compress=zstd,subvol=@home 0 0
+```
+:::
+
+### Ubuntu style
+This layout keeps root and home separate while using a single Btrfs partition. It is simpler to set up and is compatible with tools such as [Timeshift](#timeshift).
+
+::: info /etc/fstab
+```
+/dev/mapper/nvme0n1p3_crypt /               btrfs   defaults,subvol=@ 0       0
+/dev/mapper/nvme0n1p3_crypt /home           btrfs   defaults,subvol=@home 0       0
+```
+:::
+
+## Resources
 
 ### Presentations
 
@@ -31,35 +63,9 @@ https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/SysadminGuide
 
 https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/Incremental_Backup.html
 
-### [Official documentation](https://btrfs.readthedocs.io/en/latest/)
+### Official documentation
 
-### Snapshot layouts
-
-#### OpenSUSE style
-As described [here](https://en.opensuse.org/SDB:BTRFS#Default_Subvolumes) in the official documentation, and with some more detail and explanation [here](https://www.jwillikers.com/btrfs-layout). The advantage is that you have a lot more control over what happens during a roll back and how often or if you want to snapshot certain directories; the disadvantage is: unless you're running OpenSUSE, you have to set all this up manually.
-
-::: info /etc/fstab
-```
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /               btrfs   defaults,subvol=@ 0       0
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /root           btrfs   defaults,subvol=@root_user 0       0
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /tmp		  btrfs   defaults,subvol=@tmp	 0       0
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /usr/local	  btrfs   defaults,subvol=@usr_local 0       0
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /var	 	  btrfs   defaults,subvol=@var 	0       0
-UUID=8884113b-f807-4ac6-a97a-948fe9eee833 /opt	 	  btrfs   defaults,subvol=@opt 	0       0
-UUID=0786fd3e-4e4c-4113-858b-a7f53e676be9 /home           btrfs   defaults,compress=zstd,subvol=@home 0       0
-```
-:::
-
-#### Ubuntu style
-
-Uses a subvolume layout that separates the root system (`@`) from the home directory (`@home`) on a single partition. The advantage is that it comes default and there isn't anything you need to do to set it up, plus tools like [Timeshift](#timeshift) require this layout to work.
-
-::: info /etc/fstab
-```
-/dev/mapper/nvme0n1p3_crypt /               btrfs   defaults,subvol=@ 0       0
-/dev/mapper/nvme0n1p3_crypt /home           btrfs   defaults,subvol=@home 0       0
-```
-:::
+https://btrfs.readthedocs.io/en/latest/
 
 ## Useful tools
 
