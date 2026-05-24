@@ -15,11 +15,21 @@ BTRFS is a Linux file system. It has several features that make it cool:
 	* Ztd, lzo, zlib
 * Checksums
 
+### Presentations
+
 [BTRFS Lightning Talk - DTG (PDF)](./BTRFS%20Lightning%20Talk%20-%20DTG.pdf)
 
 [BTRFS Lightning Talk - DTG (YouTube)](https://www.youtube.com/live/iu-ryIwFcAw?si=Kq3gbEDuxq2Khqoa&t=1409)
 
 ### Walkthroughs
+
+https://github.com/codeHaiku22/Btrfs-Guide/tree/main
+
+https://christitus.com/btrfs-guide/
+
+https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/SysadminGuide.html
+
+https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/Incremental_Backup.html
 
 ### [Official documentation](https://btrfs.readthedocs.io/en/latest/)
 
