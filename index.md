@@ -11,6 +11,10 @@ hero:
       text: Checkout the code for this site on GitHub
       link: https://github.com/augieschwer/schwer-dot-us
 features:
+  - title: Bcache
+    details: Documentation and configuration for my bcache setup.
+    link: bcache.md
+    linkText: Bcache
   - title: BTRFS
     details: Documentation and configuration for my btrfs setup.
     link: btrfs.md
