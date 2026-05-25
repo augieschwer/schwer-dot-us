@@ -2,6 +2,8 @@
 
 Bcache is a Linux kernel block layer cache. It allows one or more fast storage devices (like SSDs) to be used as a cache for slower storage devices (like HDDs). This can significantly improve the performance of the slower storage devices by caching frequently accessed data on the faster devices.
 
+Related, see my LVM guide [here](./lvm.md) to learn about `lvmcache`, which is a similar caching mechanism that works with LVM volumes.
+
 ## Documentation
 - [Bcache Documentation](https://www.kernel.org/doc/html/latest/admin-guide/bcache.html)
 - [Bcache Arch Documentation](https://wiki.archlinux.org/title/Bcache)
@@ -57,9 +59,11 @@ The output will show information about the cache device, backing device, cache m
 ```sh
 cat /sys/block/bcache0/bcache/cache_mode
 ```
-This command displays the current cache mode of the bcache device. The output will indicate whether the cache mode is set to "writeback", "writethrough", or "writearound". Knowing the current cache mode can help you understand how data is being handled by the bcache device and can assist in making informed decisions about performance tuning and data safety.
+This command displays the current cache mode of the bcache device. The output will indicate whether the cache mode is set to "writeback", "writethrough", or "writearound".
 
 [bcache-status](https://gist.github.com/augieschwer/c84d3fee3d1d1181e421b4ce0874a381)
+
+Quickly check the status of your bcache devices with this script. It provides a summary of the cache device, backing device, cache mode, and other relevant information in a human-readable format.
 
 ```sh
 python3 ./bcache-status 
