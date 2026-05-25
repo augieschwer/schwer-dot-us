@@ -58,3 +58,29 @@ The output will show information about the cache device, backing device, cache m
 cat /sys/block/bcache0/bcache/cache_mode
 ```
 This command displays the current cache mode of the bcache device. The output will indicate whether the cache mode is set to "writeback", "writethrough", or "writearound". Knowing the current cache mode can help you understand how data is being handled by the bcache device and can assist in making informed decisions about performance tuning and data safety.
+
+[bcache-status](https://gist.github.com/augieschwer/c84d3fee3d1d1181e421b4ce0874a381)
+
+```sh
+python3 ./bcache-status 
+--- bcache ---
+Device                      /dev/bcache0 (252:0)
+UUID                        f6678635-bbb3-45ac-b114-b23396bcf5f4
+Block Size                  0.50KiB
+Bucket Size                 512.00KiB
+Congested?                  False
+Read Congestion             2.0ms
+Write Congestion            20.0ms
+Total Cache Size            111.79GiB
+Total Cache Used            4.47GiB	(3%)
+Total Cache Unused          107.32GiB	(96%)
+Dirty Data                  0B	(0%)
+Evictable Cache             107.32GiB	(96%)
+Replacement Policy          [lru] fifo random
+Cache Mode                  writethrough [writeback] writearound none
+Total Hits                  4033	(21%)
+Total Misses                14361
+Total Bypass Hits           183	(58%)
+Total Bypass Misses         130
+Total Bypassed              3.50GiB
+```
