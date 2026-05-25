@@ -24,6 +24,17 @@ cryptsetup open /dev/bcache0 bcache0_crypt
 ```
 This example shows how to encrypt the bcache device using LUKS. The first command formats the bcache device with LUKS encryption, and the second command opens the encrypted device, making it available for use under the name `bcache0_crypt`. You can then use `bcache0_crypt` as you would any other block device, and it will be encrypted on disk.
 
+#### Crypttab Configuration
+::: info /etc/crypttab
+```
+# Fields are: name, underlying device, passphrase, cryptsetup options.
+
+# Mount /dev/bcache0 as /dev/mapper/bcache0_crypt and prompt for the passphrase at boot time.
+bcache0_crypt /dev/bcache0 none luks
+```
+:::
+This line in the `/etc/crypttab` file configures the system to automatically open the encrypted bcache device at boot time, prompting the user for the passphrase.
+
 ### Filesystem Creation
 ```sh
 mkfs.btrfs /dev/mapper/bcache0_crypt
