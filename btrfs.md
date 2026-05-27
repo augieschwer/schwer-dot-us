@@ -21,7 +21,7 @@ Btrfs is a Linux filesystem with features that are useful for my systems:
 There are two common layouts I use:
 
 ### OpenSUSE style
-This layout separates system directories into their own subvolumes. It is more work to set up manually, but it gives better rollback control and finer snapshot scope.
+[This](https://en.opensuse.org/SDB:BTRFS) layout separates system directories into their own subvolumes. It is more work to set up manually, but it gives better rollback control and finer snapshot scope.
 
 ::: info /etc/fstab
 ```
