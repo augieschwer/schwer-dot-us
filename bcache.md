@@ -61,7 +61,46 @@ cat /sys/block/bcache0/bcache/cache_mode
 ```
 This command displays the current cache mode of the bcache device. The output will indicate whether the cache mode is set to "writeback", "writethrough", or "writearound".
 
-[bcache-status](https://gist.github.com/augieschwer/c84d3fee3d1d1181e421b4ce0874a381)
+### bcache-super-show
+```sh
+➜  ~ sudo bcache-super-show /dev/sdc                        
+sb.magic		ok
+sb.first_sector		8 [match]
+sb.csum			E7736DAC856031A1 [match]
+sb.version		1 [backing device]
+
+dev.label		(empty)
+dev.uuid		e6a6c2ce-036c-4f55-afef-ac236cb27da1
+dev.sectors_per_block	1
+dev.sectors_per_bucket	1024
+dev.data.first_sector	16
+dev.data.cache_mode	1 [writeback]
+dev.data.cache_state	1 [clean]
+
+cset.uuid		f6678635-bbb3-45ac-b114-b23396bcf5f4
+➜  ~ sudo bcache-super-show /dev/sdd
+sb.magic		ok
+sb.first_sector		8 [match]
+sb.csum			CF5E65A00231C087 [match]
+sb.version		3 [cache device]
+
+dev.label		(empty)
+dev.uuid		2db071f6-a3f7-4a0e-bf18-48b5a1208b7f
+dev.sectors_per_block	1
+dev.sectors_per_bucket	1024
+dev.cache.first_sector	1024
+dev.cache.cache_sectors	234439680
+dev.cache.total_sectors	234440704
+dev.cache.ordered	yes
+dev.cache.discard	no
+dev.cache.pos		0
+dev.cache.replacement	0 [lru]
+
+cset.uuid		f6678635-bbb3-45ac-b114-b23396bcf5f4
+```
+The `bcache-super-show` command displays detailed information about the bcache superblock for both the cache device and the backing device. This includes information such as the magic number, version, UUIDs, sectors per block, sectors per bucket, cache mode, cache state, and other relevant details. This can be useful for diagnosing issues with your bcache setup or for verifying that the devices are configured correctly.
+
+### [bcache-status](https://gist.github.com/augieschwer/c84d3fee3d1d1181e421b4ce0874a381)
 
 Quickly check the status of your bcache devices with this script. It provides a summary of the cache device, backing device, cache mode, and other relevant information in a human-readable format.
 
